@@ -1,8 +1,6 @@
 package com.service.impl;
 
 import com.service.TestService;
-import org.springframework.context.annotation.Bean;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
