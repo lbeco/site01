@@ -1,20 +1,4 @@
-server:
-  port: 4396
-
-
 spring:
-  resources:
-    static-locations: classpath:config/
-  datasource:
-    username: root
-    password: root
-    jdbc-url: jdbc:h2:file:./h2test
-    driver-class-name: org.h2.Driver
-    platform: org.hibernate.dialect.H2Dialect
-#    #启动时需要初始化的建表语句
-#    schema: schema.sql
-#      #初始化的数据
-#    data: classpath:data-mysql.sql
-    # Initialize the datasource with available DDL and DML scripts.
-    initialization-mode: always
-    continue-on-error: false
+  profiles:
+    active: dev
+

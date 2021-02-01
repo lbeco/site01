@@ -1,5 +1,4 @@
 CREATE TABLE country (
-    id   INTEGER      NOT NULL AUTO_INCREMENT,
-    name VARCHAR(128) NOT NULL,
-    PRIMARY KEY (id)
+    `id`   INT(8)  NOT NULL AUTO_INCREMENT,
+    name VARCHAR(128) NOT NULL
 );
