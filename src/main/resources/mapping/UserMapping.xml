@@ -7,10 +7,19 @@
         <result column="userName" jdbcType="VARCHAR" property="userName" />
         <result column="passWord" jdbcType="VARCHAR" property="passWord" />
         <result column="realName" jdbcType="VARCHAR" property="realName" />
+        <result column="height" jdbcType="INTEGER" property="height" />
+        <result column="birthday" jdbcType="DATE" property="birthday" />
+        <result column="comp_id" jdbcType="INTEGER" property="compId" />
     </resultMap>
 
     <select id="Sel" resultType="com.entity.User">
-        select * from user where id = #{id}
+        select id,
+        userName,
+        passWord,
+        realName,
+        height,
+        birthday,
+        comp_id from user where id = #{id}
     </select>
 
 </mapper>
