@@ -9,14 +9,12 @@ import org.springframework.context.annotation.Primary;
 import javax.sql.DataSource;
 
 @Configuration
-public class datasource {
-
+public class myDataSource {
 
     @Bean
     @Primary
     @ConfigurationProperties(prefix = "spring.datasource")
-    public DataSource dataSource() {
-        // 配置数据源（注意，我使用的是 HikariCP 连接池），以上注解是指定数据源，否则会有冲突
+    public DataSource myDataSource() {
         return DataSourceBuilder.create().build();
 
     }
