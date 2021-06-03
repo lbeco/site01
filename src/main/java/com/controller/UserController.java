@@ -1,20 +1,19 @@
 package com.controller;
 
 
+import api.request.UserRequest;
 import api.response.UserResponse;
-import com.alibaba.fastjson.JSONObject;
+import com.entity.User;
 import com.service.UserService;
 import constant.HttpResponse;
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/testBoot")
+@RequestMapping("/user")
 @Slf4j
 public class UserController {
     @Autowired
@@ -23,16 +22,43 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping("getUser/{id}")
+    @ApiOperation("获取用户")
+    @RequestMapping(value = "getUser/{id}", method = RequestMethod.GET)
     @ResponseBody
     public HttpResponse<UserResponse> GetUser(@PathVariable int id) {
-        appContext.getApplicationName();
-        String str = JSONObject.toJSONString(userService.Sel(id));
-        UserResponse userResponse = new UserResponse();
-        userResponse.setResult("气气");
+        User user = userService.Sel(id);
+        UserResponse userResponse = UserResponse.builder()
+                .name(user.getUserName())
+                .height(user.getHeight())
+                .birthday(user.getBirthday())
+                .build();
         HttpResponse<UserResponse> httpResponse = new HttpResponse<>();
         httpResponse.setData(userResponse);
         return httpResponse;
+    }
 
+    @ApiOperation("利用id获取用户")
+    @RequestMapping(value = "getUserById/", method = RequestMethod.GET)
+    @ResponseBody
+    public HttpResponse<UserResponse> GetUserById(@RequestParam int userId) {
+        User user = userService.Sel(userId);
+        UserResponse userResponse = UserResponse.builder()
+                .name(user.getUserName())
+                .height(user.getHeight())
+                .birthday(user.getBirthday())
+                .build();
+        HttpResponse<UserResponse> httpResponse = new HttpResponse<>();
+        httpResponse.setData(userResponse);
+        return httpResponse;
+    }
+
+    @ApiOperation("设置用户")
+    @RequestMapping(value = "setUser/", method = RequestMethod.POST)
+    @ResponseBody
+    public HttpResponse<?> addUser(@RequestBody UserRequest userRequest) {
+        userService.setUser(userRequest);
+
+        HttpResponse<UserResponse> httpResponse = new HttpResponse<>();
+        return httpResponse;
     }
 }

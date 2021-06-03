@@ -2,7 +2,7 @@ package constant;
 
 import com.alibaba.fastjson.JSON;
 
-public class HttpResponse<T> {
+public class HttpResponse<T> extends JsonModule{
 
     private long code;
 
@@ -32,10 +32,6 @@ public class HttpResponse<T> {
 
     public String getMessage(){
         return message;
-    }
-
-    public String toString(){
-        return JSON.toJSONString(data);
     }
 
 }

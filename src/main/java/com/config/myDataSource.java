@@ -14,7 +14,7 @@ public class myDataSource {
     @Bean
     @Primary
     @ConfigurationProperties(prefix = "spring.datasource")
-    public DataSource myDataSource() {
+    public DataSource getMyDataSource() {
         return DataSourceBuilder.create().build();
 
     }

@@ -11,15 +11,26 @@
         <result column="birthday" jdbcType="DATE" property="birthday" />
         <result column="comp_id" jdbcType="INTEGER" property="compId" />
     </resultMap>
+    <sql id="baseColumnList">
+        id,userName,passWord,realName,height,birthday,comp_id
+    </sql>
 
     <select id="Sel" resultType="com.entity.User">
-        select id,
-        userName,
-        passWord,
-        realName,
-        height,
-        birthday,
-        comp_id from user where id = #{id}
+        select
+        <include refid="baseColumnList"/>
+        from user where id = #{id}
     </select>
+
+    <insert id="insertUser" parameterType="com.entity.User">
+        insert into user  (<include refid="baseColumnList"/> ) values
+        (#{id,jdbcType=INTEGER},
+        #{userName,jdbcType=VARCHAR},
+        #{passWord,jdbcType=VARCHAR},
+        #{realName,jdbcType=VARCHAR},
+        #{height,jdbcType=INTEGER},
+        #{birthday,jdbcType=DATE},
+        #{compId,jdbcType=INTEGER})
+
+    </insert>
 
 </mapper>

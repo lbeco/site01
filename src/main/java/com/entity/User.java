@@ -1,12 +1,14 @@
 package com.entity;
 
-import jdk.nashorn.internal.objects.annotations.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import java.util.Date;
 
+@Getter
+@Setter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class User {
     private Integer id;
 
