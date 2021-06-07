@@ -67,10 +67,13 @@ public class UserController {
         return httpResponse;
     }
 
+    @ApiOperation("测试servlet")
     @RequestMapping(value = "/testServletAPI",method = RequestMethod.POST)
     public void testServletAPI(HttpServletRequest request, HttpServletResponse response, Writer out)
             throws IOException {
         System.out.println("testServletAPI,request:" + request + ",response:" + response);
         out.write("Hello SpringMVC");
     }
+
+
 }
