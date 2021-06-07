@@ -12,6 +12,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.Writer;
+
 @RestController
 @RequestMapping("/user")
 @Slf4j
@@ -60,5 +65,12 @@ public class UserController {
 
         HttpResponse<UserResponse> httpResponse = new HttpResponse<>();
         return httpResponse;
+    }
+
+    @RequestMapping(value = "/testServletAPI",method = RequestMethod.POST)
+    public void testServletAPI(HttpServletRequest request, HttpServletResponse response, Writer out)
+            throws IOException {
+        System.out.println("testServletAPI,request:" + request + ",response:" + response);
+        out.write("Hello SpringMVC");
     }
 }
