@@ -1,5 +1,6 @@
 package com.controller;
 
+import com.service.TestService;
 import com.service.impl.TestServiceImpl;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,11 +15,10 @@ import java.io.IOException;
 import java.io.Writer;
 
 @Controller
-//@RequiredArgsConstructor
 @RequestMapping("/test")
 public class TestController {
     @Autowired
-    private final TestServiceImpl testService;
+    private final TestService testService;
 
     public TestController(TestServiceImpl testService) {
         this.testService = testService;
