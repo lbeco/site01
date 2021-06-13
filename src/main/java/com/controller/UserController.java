@@ -58,11 +58,10 @@ public class UserController {
     }
 
     @ApiOperation("设置用户")
-    @RequestMapping(value = "setUser/", method = RequestMethod.POST)
+    @RequestMapping(value = "/setUser", method = RequestMethod.POST)
     @ResponseBody
     public HttpResponse<?> addUser(@RequestBody UserRequest userRequest) {
         userService.setUser(userRequest);
-
         HttpResponse<UserResponse> httpResponse = new HttpResponse<>();
         return httpResponse;
     }
