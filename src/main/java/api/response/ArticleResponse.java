@@ -10,4 +10,6 @@ import lombok.*;
 @AllArgsConstructor
 public class ArticleResponse extends JsonModule {
     String title;
+
+    String main;
 }

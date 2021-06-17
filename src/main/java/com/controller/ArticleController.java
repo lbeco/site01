@@ -22,7 +22,7 @@ public class ArticleController {
     public HttpResponse<ArticleResponse> GetArticle(@PathVariable Integer id) {
         HttpResponse<ArticleResponse> httpResponse = new HttpResponse<>();
         Article article = articleService.getArticleByArticleId(id);
-        httpResponse.setData(ArticleResponse.builder().title(article.getTitle()).build());
+        httpResponse.setData(ArticleResponse.builder().title(article.getTitle()).main(article.getMain()).build());
         return httpResponse;
     }
 }

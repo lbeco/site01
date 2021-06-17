@@ -12,9 +12,7 @@ public class ArticleServiceImpl implements ArticleService {
     private ArticleRepository articleRepository;
 
     public Article getArticleByArticleId(Integer articleId) {
-        Article article = Article.builder().articleId((long)2).title("123").main("123").build();
-        // Article article = articleRepository.findByArticleId((long) articleId);
-        articleRepository.save(article);
+        Article article = articleRepository.findByArticleId((long) articleId);
         articleRepository.findAll();
         return article;
     }
