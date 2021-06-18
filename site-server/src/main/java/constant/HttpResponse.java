@@ -1,7 +1,5 @@
 package constant;
 
-import com.alibaba.fastjson.JSON;
-
 public class HttpResponse<T> extends JsonModule{
 
     private long code;
