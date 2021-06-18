@@ -3,7 +3,11 @@ server:
 
 
 spring:
-
+  data:
+    mongodb:
+      host: localhost # mongodb的连接地址
+      port: 27017 # mongodb的连接端口号
+      database: site # mongodb的连接的数据库
   datasource:
     username: root
     password: 123456
@@ -13,7 +17,6 @@ spring:
       - classpath:schema.sql
       # 数据
     data:
-      - classpath:data.sql
     separator: ; #; 为sql脚本中语句分隔符
     sql-script-encoding: utf-8 #utf-8 为文件的编码
     initialization-mode: always  #always为始终执行初始化，embedded只初始化内存数据库（默认值）,如h2等，never为不执行初始化。
@@ -28,8 +31,3 @@ logging:
     com:
       example:
         mapper: debug
-
-mongodb:
-  host: localhost # mongodb的连接地址
-  port: 27017 # mongodb的连接端口号
-  database: site # mongodb的连接的数据库
