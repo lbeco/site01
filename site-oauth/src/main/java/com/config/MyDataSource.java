@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Primary;
 import javax.sql.DataSource;
 
 @Configuration
-public class myDataSource {
+public class MyDataSource {
 
     @Bean
     @Primary
